@@ -24,3 +24,9 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
  
 error: 
   约定式 在 layout 目录下添加一个 error.vue  文件， props：['error']  错误信息
+  
+路由守卫：
+  前置
+    依赖中间件 middleware ,插件
+  后置
+    使用vue 的 beforeRouteLeave 钩子

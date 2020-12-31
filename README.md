@@ -21,3 +21,6 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 路由：
   约定式路由
+ 
+error: 
+  约定式 在 layout 目录下添加一个 error.vue  文件， props：['error']  错误信息

@@ -5,7 +5,7 @@ export default (context) => {
     app.router.beforeEach((to,from,next) => {
         // 全局前置路由守卫 ， 插件
         // 可以使用 next(true)/next(false)  ，但是不能使用 next('/index') 进行跳转， 用redirect进行跳转
-        console.log('插件配置 全局前置路由守卫', to)
+        console.log('插件配置 全局前置路由守卫')
         // if (to.name === 'goods' || to.name === 'goods-id') {
         //     redirect({name: 'index'})
         // } else {

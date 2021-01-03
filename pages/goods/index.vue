@@ -11,10 +11,17 @@ import {mapState, mapMutations,mapActions,mapGetters} from 'vuex'
 
 export default {
   name: 'goods',
-  head: {
-    meta: [
-      {name: 'keywords', content: 'mayssr我的第一个ssr'}
-    ]
+  head () {
+    return {
+      meta: [
+        {name: 'keywords', content: this.content}
+      ]
+    }
+  },
+  data () {
+    return {
+      content: 'mayssr我的第一个ssr'
+    }
   },
   middleware (context) {
     let {store, route, redirect, params, query, req, res} = context

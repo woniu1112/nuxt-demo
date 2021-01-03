@@ -1,13 +1,12 @@
 export default (context) => {
-    let {$axios, redirect, route, store} = context
+    let {$axios, redirect, route, store, app} = context
     // 基本配置
-
     $axios.defaults.timeout = 10000;
 
     // 请求拦截
     $axios.onRequest(config => {
         console.log('请求拦截')
-        config.headers.token = 'myssrtoken'
+        config.headers.token = store.state.user.token
         return config
     })
 

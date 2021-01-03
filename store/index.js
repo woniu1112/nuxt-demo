@@ -18,7 +18,12 @@ export const mutations = {
 }
 
 export const actions = {
+  // nuxtServerInit 初始化生命周期
   nuxtServerInit(store, context) {
+    let {app: {$cookies}} = context
+    // 初始化东西到 store 中
+    let user = $cookies.get('user') ? $cookies.get('user') : {err: 2,msg: '未登录',token: ''}
+    store.commit('user/M_UPDATE', user)
     console.log('nuxtserverinit')
   }
 }

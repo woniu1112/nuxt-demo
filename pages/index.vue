@@ -8,6 +8,8 @@
       <nuxt-link to="/goods">goods</nuxt-link>
       <nuxt-link :to="{name: 'goods-id', params: {id: 3}}">detail</nuxt-link>
       <test></test>
+      <button @click="goGoodsHandler">go goods</button>
+      <el-button>el-button</el-button>
       <nuxt />
     </div>
   </div>
@@ -17,6 +19,9 @@
 import test from '~/components/test.vue'
 export default {
   conponents: {test},
+  head () {
+    return this.$seo(this.seoData.title, this.seoData.content, this.seoData.payload)
+  },
   middleware (context) {
     console.log('pages')
   },
@@ -26,7 +31,9 @@ export default {
     return true // return false 则是 404页面
   },
   // 读数据，返回给组件
-  asyncData () {
+  asyncData (context) {
+    let {store} = context
+    console.log(store.state)
     // 异步业务逻辑，读取服务端数据
     return {
       b: 2
@@ -40,6 +47,13 @@ export default {
   },
   data () {
     return {
+      seoData: {
+        title: '首页',
+        content: 'myssr-首页',
+        payload: [
+          {}
+        ]
+      },
       b: 1
     }
   },
@@ -51,11 +65,16 @@ export default {
   },
   mounted () {
     console.log('mounted')
+  },
+  methods: {
+    goGoodsHandler () {
+      this.$router.push({name: 'goods-id', params: {id: 2}})
+    }
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -79,7 +98,7 @@ export default {
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
+  color: $theme-bg;
   letter-spacing: 1px;
 }
 
